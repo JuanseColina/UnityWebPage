@@ -10,9 +10,15 @@ public class CircleController : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < circles.Length; i++)
+        StartCoroutine(CircleLoop());
+    }
+
+    private IEnumerator CircleLoop()
+    {
+        foreach (var t in circles)
         {
-            LeanTween.scale(circles[i], Vector3.one * scale, time).setLoopPingPong();
+            LeanTween.scale(t, Vector3.one * scale, time).setLoopPingPong();
+            yield return new WaitForSeconds(.1f);
         }
     }
 }
