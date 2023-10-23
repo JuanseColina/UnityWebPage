@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CircleController : MonoBehaviour
 {
@@ -17,8 +18,7 @@ public class CircleController : MonoBehaviour
     {
         foreach (var t in circles)
         {
-            LeanTween.scale(t, Vector3.one * scale, time).setLoopPingPong();
-            yield return new WaitForSeconds(.1f);
+            LeanTween.scale(circles[i], Vector3.one * scale, Random.Range(time / 1.5f, time)).setLoopPingPong();
         }
     }
 }
